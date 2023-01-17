@@ -1,0 +1,72 @@
+<div class="employee-form">
+    <div class="modal" [ngStyle]="{'display':displayStyle}" id="studentFormModal" tabindex="-1"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <form [formGroup]="form" enctype="multipart/form-data" (submit)="save()">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-secondary" id="exampleModalLabel">{{'FAQS_FORM'|translate}}</h5>
+                        <button type="button" (click)="close()" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">{{'QUESTION_AR'|translate}}</label>
+                                    <textarea formControlName="question_ar"
+                                        [class.is-invalid]="question_ar?.invalid&&question_ar?.touched" type="text"
+                                        class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                        name="question_ar" rows="3"></textarea>
+                                    <div class="invalid-feedback text-danger">
+                                        {{_translateUtil.translate(['QUESTION_AR','REQUIRED'])}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">{{'QUESTION_EN'|translate}}</label>
+                                    <textarea formControlName="question_en"
+                                        [class.is-invalid]="question_en?.invalid&&question_en?.touched" type="text"
+                                        class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                        name="question_en" rows="3"></textarea>
+                                    <div class="invalid-feedback text-danger">
+                                        {{_translateUtil.translate(['QUESTION_EN','REQUIRED'])}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">{{'ANSWER_AR'|translate}}</label>
+                                    <textarea formControlName="answer_ar"
+                                        [class.is-invalid]="answer_ar?.invalid&&answer_ar?.touched" type="text"
+                                        class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                        name="answer_ar" rows="3"></textarea>
+                                    <div class="invalid-feedback text-danger">
+                                        {{_translateUtil.translate(['ANSWER_AR','REQUIRED'])}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">{{'ANSWER_EN'|translate}}</label>
+                                    <textarea formControlName="answer_en"
+                                        [class.is-invalid]="answer_en?.invalid&&answer_en?.touched" type="text"
+                                        class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                        name="answer_en" rows="3"></textarea>
+                                    <div class="invalid-feedback text-danger">
+                                        {{_translateUtil.translate(['ANSWER_EN','REQUIRED'])}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" modal-footer">
+                        <button type="submit" class="btn btn-primary">{{'SAVE_CHANGES'|translate}}</button>
+                        <button (click)="close()" type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">{{'CLOSE'|translate}}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

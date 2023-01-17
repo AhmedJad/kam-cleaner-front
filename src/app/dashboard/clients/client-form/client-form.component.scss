@@ -1,0 +1,38 @@
+.client-form {
+    *{
+        color: #888888;
+    }
+    .icons{
+        i{
+            font-size: 20px;
+        }
+        i:hover{
+            cursor: pointer;
+        }
+    }
+    button{
+        color: white;
+    }
+    .modal {
+        display: block;
+    }
+    .form-control {
+        padding: 10px;
+    }
+    .form-group{
+        margin-bottom: 10px;
+        label {
+            margin-bottom: 5px;
+        }
+    }
+    .modal-dialog{
+        overflow-y: initial !important
+    }
+    .modal-body{
+        max-height: calc(100vh - 200px);
+        overflow-y: auto;
+    }
+    .selected {
+        background-color: #f8f9fa;
+    }
+}

@@ -1,0 +1,58 @@
+<!--Services Page 1 Start-->
+<section *ngIf="products.length>0" class="products-list services-page-1">
+    <div class="container">
+        <div class="row">
+            <!--Services Two single Start-->
+            <div *ngFor="let i=index;let product of products | paginate: { id: 'paging',
+            itemsPerPage: itemsPerPage,
+            currentPage: page,
+            totalItems: totalItems }" class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="100ms">
+                <div class="services-two__single">
+                    <div class="services-two__img-box">
+                        <a routerLink="/products-list/{{product.id}}">
+
+                            <div class="services-two__img">
+                                <img [src]="product.image" alt="">
+                            </div>
+                        </a>
+                        <div class="services-two__icon">
+                            <span [class]="product.icon"></span>
+                        </div>
+                    </div>
+                    <div class="services-two__content">
+                        <h3 class="services-two__title">
+                            <a routerLink="/products-list/{{product.id}}">
+                                {{_translateUtil.translateModel(product,['name_en','name_ar'])}}
+                            </a>
+                        </h3>
+                        <p class="services-two__text fs-5">
+                            {{product.price}}
+                        </p>
+                        <ng-container *ngIf="(isUserType()||isGuest())&&!itemAddedToCart(product)">
+                            <a href="" [class.disabled]="" (click)="addToCart($event,product)"
+                                class="services-two__btn">
+                                {{'ADD_TO_CART'|translate}}
+                            </a>
+                        </ng-container>
+                        <ng-container *ngIf="isUserType()&&itemAddedToCart(product)">
+                            <a class="in-cart services-two__btn">
+                                {{'IN_CART'|translate}}
+                            </a>
+                        </ng-container>
+                        <ng-container *ngIf="isAdminType()">
+                            <a routerLink="/products-list/{{product.id}}" class="services-two__btn">
+                                {{'VIEW_MORE'|translate}}
+                            </a>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        <pagination-controls id="paging" [responsive]="true" previousLabel="" nextLabel=""
+            (pageChange)="onPageChange($event)">
+        </pagination-controls>
+    </div>
+</section>
+<!--Services Page 1 End-->

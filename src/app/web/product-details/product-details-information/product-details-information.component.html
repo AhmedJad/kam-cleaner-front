@@ -1,0 +1,64 @@
+<!--Service Details Start-->
+<section *ngIf="product" class="service-details">
+    <div class="container">
+        <div class="row pb-5">
+            <div class="col-xl-4 col-lg-5">
+                <div class="service-details__left">
+                    <div class="service-details__need-help">
+                        <div class="service-details__need-help-bg"
+                            style="background-image: url(assets/images/backgrounds/service-details-need-help-bg.jpg)">
+                        </div>
+                        <div class="service-details__need-help-icon">
+                            <span class="icon-phone-call"></span>
+                        </div>
+                        <h2 class="service-details__need-help-title">
+                            {{'BEST_SOLUTION_TO_YOUR_HOUSE'|translate}}
+                        </h2>
+                        <div class="service-details__need-help-contact">
+                            <p>{{'CALL_ANYTIME'|translate}}</p>
+                            <a href="tel:{{contact?.phone}}">{{contact?.phone}}</a>
+                        </div>
+                    </div>
+                    <div class="service-details__download">
+                        <a routerLink="/contact-us-info" fragment="order_form" class="thm-btn service-details__btn">
+                            {{'CONTACT_US_ANY_TIME'|translate}}
+                            <i class="fa fa-angle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8 col-lg-7">
+                <div class="service-details__right">
+                    <div class="service-details__img">
+                        <img [src]="product.image" alt="">
+                    </div>
+                    <div class="service-details__content">
+                        <h3 class="service-details__content-title">
+                            {{_translateUtil.translateModel(product,['name_en','name_ar'])}}
+                        </h3>
+                        <p class="service-details__text-1">
+                            {{_translateUtil.translateModel(product,['description_en','description_ar'])}}
+                        </p>
+                    </div>
+                    <div class="service-details__benefits-right my-0">
+                        <div class="service-details__benefits">
+                            <h3 class="service-details__benefits-title mb-3">{{'OUR_BENEFITS'|translate}}</h3>
+                            <ul class="list-unstyled service-details__benefits-points">
+                                <li *ngFor="let feature of product.features">
+                                    <div class="icon">
+                                        <i class="fa fa-check"></i>
+                                    </div>
+                                    <div class="text">
+                                        <p>
+                                            {{_translateUtil.translateModel(feature,['context_en','context_ar'])}}
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Service Details End-->

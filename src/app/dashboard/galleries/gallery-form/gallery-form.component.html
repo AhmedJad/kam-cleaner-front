@@ -1,0 +1,41 @@
+<div class="gallery-form">
+    <div class="modal" [ngStyle]="{'display':displayStyle}" id="studentFormModal" tabindex="-1"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form enctype="multipart/form-data">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-secondary" id="exampleModalLabel">{{'GALLERY_FORM'|translate}}</h5>
+                        <button type="button" (click)="close()" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12 mb-3">
+                                <div class="image">
+                                    <img class="border-bottom" [src]="imagePath">
+                                    <div class="image-upload">
+                                        <label for="image">
+                                            <i class="fa fa-camera"></i>
+                                        </label>
+                                        <input
+                                            accept="image/apng, image/avif, image/gif, image/jpeg, image/png, image/svg+xml, image/webp"
+                                            (change)="onFileChanged($event)" type="file" id="image">
+                                    </div>
+                                </div>
+                                <div [class]="{'text-secondary':!invalidImage,'text-danger':invalidImage}">
+                                    {{ "ENITER_VALID_IMAGE_SIZE" |translate:{size:'370px * 438px'} }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" modal-footer">
+                        <button type="button" (click)="save()"
+                            class="btn btn-primary">{{'SAVE_CHANGES'|translate}}</button>
+                        <button (click)="close()" type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">{{'CLOSE'|translate}}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

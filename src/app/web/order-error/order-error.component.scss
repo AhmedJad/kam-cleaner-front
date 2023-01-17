@@ -1,0 +1,14 @@
+.order-error-container {
+    .order-error{
+        display: flex;
+        height: 300px;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        i{
+            font-size: 25px;
+            padding: 20px;
+            border-radius: 50%;
+        }
+    }
+}

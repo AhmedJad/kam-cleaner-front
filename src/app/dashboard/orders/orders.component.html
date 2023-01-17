@@ -1,0 +1,96 @@
+<div class="orders-table container-fluid">
+    <div class="filters mb-3">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group search">
+                    <label for="exampleFormControlSelect1">{{'SEARCH'|translate}}</label>
+                    <input [formControl]="searchCtrl" class="form-control" type="text"
+                        placeholder="{{'SEARCH'|translate}}">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">{{'ORDER_STATUS'|translate}}</label>
+                    <select [formControl]="orderStatusCtrl" class="form-control" id="exampleFormControlSelect1">
+                        <option value="">-</option>
+                        <option value="pending">{{'Pending'|translate}}</option>
+                        <option value="processing">{{'Processing'|translate}}</option>
+                        <option value="shipping">{{'Shipping'|translate}}</option>
+                        <option value="completed">{{'Completed'|translate}}</option>
+                        <!-- <option value="faild">{{'Faild'|translate}}</option> -->
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">{{'PAYMENT_STATUS'|translate}}</label>
+                    <select [formControl]="paymentStatusCtrl" class="form-control" id="exampleFormControlSelect1">
+                        <option value="">-</option>
+                        <option value="Paid">{{'Paid'|translate}}</option>
+                        <option value="Unpaid">{{'Unpaid'|translate}}</option>
+                        <!-- <option value="Faild">{{'Faild'|translate}}</option> -->
+                    </select>
+                </div>
+            </div>
+            <!-- <div class="col-md-3">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">{{'PAYMENT_METHOD'|translate}}</label>
+                    <select [formControl]="paymentMethodCtrl" class="form-control" id="exampleFormControlSelect1">
+                        <option value="">-</option>
+                        <option value="Online">{{'Online'|translate}}</option>
+                        <option value="Cash">{{'Cash'|translate}}</option>
+                    </select>
+                </div>
+            </div>
+             -->
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table id="printTable" class="table">
+            <thead class="table-light text-secondary">
+                <tr>
+                    <th scope="col">{{'ORDER_ID'|translate}}</th>
+                    <th scope="col">{{'TOTAL_PRICE'|translate}}</th>
+                    <th scope="col">{{'ORDER_STATUS'|translate}}</th>
+                    <th scope="col">{{'PAYMENT_STATUS'|translate}}</th>
+                    <!-- <th scope="col">{{'PAYMENT_METHOD'|translate}}</th> -->
+                    <th scope="col">{{'NAME'|translate}}</th>
+                    <th>{{'ACTIONS'|translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let i=index;let order of orders | paginate: { id: 'paging',
+          itemsPerPage: itemsPerPage,
+          currentPage: page,
+          totalItems: totalItems }">
+                    <td>{{order.id}}</td>
+                    <td>{{order.total_price}}</td>
+                    <td>
+                        <button [disabled]="order.order_status=='Completed'||order.order_status=='Faild'"
+                            (click)="updateStatusOrder(order)" class="status btn border">
+                            {{order.order_status | translate}}
+                        </button>
+                    </td>
+                    <td>{{order.payment_status | translate}}</td>
+                    <!-- <td>{{order.payment_method | translate}}</td> -->
+                    <td>{{order.user.first_name +" "+order.user.last_name}}</td>
+                    <td class="actions">
+                        <div class="btns">
+                            <button class="fs-9 border" *ngFor="let action of tableActions"
+                                (click)="onActionClicked(action.id,order)">
+                                <i [class]="action.icon"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="d-flex justify-content-end">
+        <pagination-controls id="paging" [responsive]="true" previousLabel="" nextLabel=""
+            (pageChange)="onPageChange($event)">
+        </pagination-controls>
+    </div>
+    <orders-details [selectedOrder]="selectedOrder" (onClose)="orderForm='none'" [displayStyle]="orderForm">
+    </orders-details>
+</div>

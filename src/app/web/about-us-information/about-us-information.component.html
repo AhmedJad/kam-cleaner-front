@@ -1,0 +1,100 @@
+<!--Get To Know Start-->
+<section *ngIf="about" class="get-to-know">
+    <div class="get-to-know-bubble float-bob-x">
+        <img src="assets/images/shapes/get-to-know-bubble.png" alt="">
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6">
+                <div class="get-to-know__left">
+                    <div class="get-to-know__img wow slideInLeft" data-wow-delay="100ms" data-wow-duration="2500ms">
+                        <img [src]="about.image" alt="">
+                        <div class="get-to-know-shape-1"></div>
+                        <div class="get-to-know-shape-2"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="get-to-know__right">
+                    <div class="section-title text-left">
+                        <span class="section-title__tagline">{{'OUR_INTRODUCTION'|translate}}</span>
+                        <h2 class="section-title__title">
+                            {{_translateUtil.translateModel(about,['title_en','title_ar'])}}
+                        </h2>
+                    </div>
+                    <p class="get-to-know__text">
+                        {{_translateUtil.translateModel(about,['description_en','description_ar'])}}
+                    </p>
+                    <div class="get-to-know__points-box">
+                        <ul class="list-unstyled get-to-know__points">
+                            <li>
+                                <div class="icon">
+                                    <span class="icon-tick"></span>
+                                </div>
+                                <div class="text">
+                                    <p>
+                                        {{_translateUtil.translateModel(about.features&&about.features[0]
+                                        ,['context_en','context_ar'])}}
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="icon">
+                                    <span class="icon-tick"></span>
+                                </div>
+                                <div class="text">
+                                    <p>
+                                        {{_translateUtil.translateModel(about.features&&about.features[1]
+                                        ,['context_en','context_ar'])}}
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="list-unstyled get-to-know__points get-to-know__points--two">
+                            <li>
+                                <div class="icon">
+                                    <span class="icon-tick"></span>
+                                </div>
+                                <div class="text">
+                                    <p>
+                                        {{_translateUtil.translateModel(about.features&&about.features[2]
+                                        ,['context_en','context_ar'])}}
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="icon">
+                                    <span class="icon-tick"></span>
+                                </div>
+                                <div class="text">
+                                    <p>
+                                        {{_translateUtil.translateModel(about.features&&about.features[3]
+                                        ,['context_en','context_ar'])}}
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="welcome-one__btn-call-box">
+                        <div class="welcome-one__btn-box">
+                            <a routerLink="/contact-us-info" class="thm-btn welcome-one__btn">{{'CONTACT_US'|translate}} <i
+                                    class="fa fa-angle-right"></i></a>
+                        </div>
+                        <div class="welcome-one__call-box">
+                            <div class="welcome-one__call-icon">
+                                <span class="icon-phone-call"></span>
+                            </div>
+                            <div class="welcome-one__call-content">
+                                <p class="welcome-one__call-sub-title">{{'CALL_ANYTIME'|translate}}</p>
+                                <h5 class="welcome-one__call-number">
+                                    <a href="tel:{{about.phone}}">{{about.phone}}</a>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Get To Know End-->

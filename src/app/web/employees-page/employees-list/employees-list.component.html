@@ -1,0 +1,43 @@
+<!--Team Page Start-->
+<section *ngIf="employees.length>0" class="team-container team-page">
+    <div class="container">
+        <div class="row">
+            <!--Team Page Single Start-->
+            <div *ngFor="let i=index;let employee of employees | paginate: { id: 'paging',
+            itemsPerPage: itemsPerPage,
+            currentPage: page,
+            totalItems: totalItems }" class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
+                <div class="team-one__single">
+                    <div class="team-one__img">
+                        <img [src]="employee.image" alt="">
+                        <ul class="list-unstyled team-one__social">
+                            <li><a [href]="employee.facebook"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a [href]="employee.twitter"><i class="fab fa-twitter"></i></a></li>
+                            <li><a [href]="employee.instgram"><i class="fab fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="team-one__content">
+                        <div class="team-one__title-box">
+                            <h3 class="team-one__name"><a>{{employee.name}}</a></h3>
+                            <ul class="list-unstyled team-one__social-two">
+                                <li><a href="#"><i class="fas fa-share-alt"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="team-one__sub-title-box">
+                            <p class="team-one__sub-title">
+                                {{_translateUtil.translateModel(employee,['job_en','job_ar'])}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Team Page Single End-->
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        <pagination-controls id="paging" [responsive]="true" previousLabel="" nextLabel=""
+            (pageChange)="onPageChange($event)">
+        </pagination-controls>
+    </div>
+</section>
+<!--Team Page End-->

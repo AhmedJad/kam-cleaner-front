@@ -1,0 +1,13 @@
+<loader></loader>
+<div [dir]="_translateUtil.getDir()">
+    <div class="lang-container text-center">
+        <a *ngIf="_translateUtil.isEnglish()" href="" class="lang" (click)="changeLang($event,'ar')">
+            <img [src]="AR_IMAGE" />
+        </a>
+        <a *ngIf="_translateUtil.isArabic()" href="" class="lang" (click)="changeLang($event,'en')">
+            <img [src]="EN_IMAGE" />
+        </a>
+       
+    </div>
+    <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,105 @@
+<app-page-header header="{{'REGISTER'|translate}}"></app-page-header>
+<div class="register-container py-5">
+    <div class="register-wrapper">
+        <div class="logo mt-2">
+            <a routerLink="/home">
+                <img src="assets/images/KAM-CLEANER-LOGO.png" alt="">
+            </a>
+        </div>
+        <div class="text-center mb-4">
+            <h5 class="text-secondary">{{'REGISTER'|translate}}</h5>
+        </div>
+        <form [formGroup]="form">
+            <div class="row">
+                <div class="mb-3 col-md-6">
+                    <label class="form-label">{{'FIRST_NAME'|translate}} <span class="text-danger">*</span></label>
+                    <input formControlName="first_name" type="text" class="form-control"
+                        [class.is-invalid]="first_name.invalid&&first_name.touched">
+                    <div class="invalid-feedback">
+                        {{'FIRST_NAME'|translate}} {{'REQUIRED'|translate}}
+                    </div>
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label class="form-label">{{'LAST_NAME'|translate}}<span class="text-danger">*</span></label>
+                    <input [class.is-invalid]="last_name.invalid&&last_name.touched" formControlName="last_name"
+                        type="text" class="form-control">
+                    <div class="invalid-feedback">
+                        {{'LAST_NAME'|translate}} {{'REQUIRED'|translate}}
+                    </div>
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label class="form-label">{{'EMAIL'|translate}} <span class="text-danger">*</span></label>
+                    <input formControlName="email" [class.is-invalid]="(email.invalid||emailExist)&&email.touched"
+                        type="text" class="form-control">
+                    <div class="invalid-feedback">
+                        <ng-container *ngIf="email.hasError('required')">
+                            {{'EMAIL'|translate}} {{'REQUIRED'|translate}}
+                        </ng-container>
+                        <ng-container *ngIf="email.hasError('email')">
+                            {{'EMAIL'|translate}} {{'NOT_VALID'|translate}}
+                        </ng-container>
+                        <ng-container *ngIf="emailExist">
+                            {{'EMAIL'|translate}} {{'EXIST'|translate}}
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label class="form-label">{{'PHONE'|translate}} <span class="text-danger">*</span></label>
+                    <input formControlName="phone" [class.is-invalid]="phone.invalid&&phone.touched" type="text"
+                        class="form-control">
+                    <div class="invalid-feedback">
+                        <ng-container *ngIf="phone.hasError('required')">
+                            {{'PHONE'|translate}} {{'REQUIRED'|translate}}
+                        </ng-container>
+                        <ng-container *ngIf="phone.hasError('pattern')">
+                            {{'PHONE'|translate}} {{'NOT_VALID'|translate}}
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">{{'PASSWORD'|translate}} <span class="text-danger">*</span></label>
+                    <input formControlName="password" [class.is-invalid]="password.invalid&&password.touched"
+                        [type]="passwordHidden?'password':'text'" class="form-control">
+                    <div class="invalid-feedback">
+                        <ng-container *ngIf="password.hasError('pattern')">
+                            {{'PASSWORD'|translate}} {{'WEAK'|translate}}
+                        </ng-container>
+                        <ng-container *ngIf="password.hasError('required')">
+                            {{'PASSWORD'|translate}} {{'REQUIRED'|translate}}
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">{{'PASSWORD_CONFIRMATION'|translate}} <span
+                            class="text-danger">*</span></label>
+                    <input formControlName="password_confirmation"
+                        [class.is-invalid]="(password_confirmation.invalid||form.hasError('notMatch'))&&password_confirmation.touched"
+                        [type]="passwordHidden?'password':'text'" class="form-control">
+                    <div class="invalid-feedback">
+                        <ng-container *ngIf="password_confirmation.hasError('required')">
+                            {{'PASSWORD'|translate}} {{'REQUIRED'|translate}}
+                        </ng-container>
+                        <ng-container *ngIf="form.hasError('notMatch')&&!password_confirmation.hasError('required')">
+                            {{'PASSWORD'|translate}} {{'NOT_MATCHED'|translate}}
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="mb-3 col-12">
+                    <div class="form-group mb-2">
+                        <label class="custom_check">
+                            <input (change)="passwordHidden=!passwordHidden" type="checkbox">
+                            <span class="checkmark">
+                                {{'SHOW_PASSWORD'|translate}}
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <div class="mb-3 col-12">
+                    <div class="d-flex justify-content-between">
+                        <button (click)="register()" class="btn btn-primary mt-2">{{'REGISTER'|translate}}</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<!--Services One Start-->
+<section *ngIf="clients.length>0" class="services-one">
+    <div class="container">
+        <div class="section-title text-center">
+            <span class="section-title__tagline">{{'WHATE_WE_OFFER'|translate}}</span>
+            <h2 class="section-title__title">
+                {{'CLIENT_WELCOME_MESSAGE'|translate}}
+            </h2>
+        </div>
+        <div class="row">
+            <!--Services One Single Start-->
+            <div *ngFor="let client of clients" class="col-xl-4 col-lg-6 wow fadeInUp" data-wow-delay="100ms">
+                <div class="services-one__single">
+                    <div class="services-one__single-top-bubble"
+                        style="background-image: url(assets/images/shapes/services-one-single-top-bubble.png);">
+                    </div>
+                    <div class="services-one__icon">
+                        <span [class]="client.icon"></span>
+                    </div>
+                    <div class="services-one__single-inner">
+                        <div class="services-one__title-box">
+                            <h3 class="services-one__title">
+                                <a href="">
+                                    {{_translateUtil.translateModel(client,['name_en','name_ar'])}}
+                                </a>
+                            </h3>
+                        </div>
+                        <div class="services-one__text-box">
+                            <p class="services-one__text">
+                                {{_translateUtil.translateModel(client,['description_en','description_ar'])}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="services-one__overly-box"
+                        style="background-image: url(assets/images/shapes/services-one-single-overlay-bg-1.png);">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Services One End-->

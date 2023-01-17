@@ -1,0 +1,28 @@
+<!--Counter One Start-->
+<section *ngIf="counters.length>0" class="counter-one">
+    <div class="container">
+        <div class="counter-one__inner wow fadeInUp" data-wow-delay="100ms">
+            <div class="counter-one-bg-1"
+                style="background-image: url(assets/images/backgrounds/counter-one-bg-1.png);"></div>
+            <div class="counter-one-bg-2"
+                style="background-image: url(assets/images/backgrounds/counter-one-bg-2.png);"></div>
+            <ul class="list-unstyled counter-one__list">
+                <li *ngFor="let counter of counters">
+                    <div class="counter-one__icon">
+                        <span [class]="counter.icon"></span>
+                    </div>
+                    <div class="counter-one__count-box">
+                        <div class="counter-one__count-box-inner">
+                            <h3 class="odometer" [attr.data-count]="counter.counter">00</h3>
+                            <span class="counter-one__plus">+</span>
+                        </div>
+                        <p class="counter-one__text">
+                            {{_translateUtil.translateModel(counter,['title_en','title_ar'])}}
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!--Counter One End-->

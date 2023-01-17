@@ -1,0 +1,44 @@
+<!--Blog One Start-->
+<section *ngIf="articles.length>0" class="blog-one">
+    <div class="blog-one-shape" style="background-image: url(assets/images/shapes/blog-one-shape.png);"></div>
+    <div class="container">
+        <div class="section-title text-left">
+            <span class="section-title__tagline">{{'LATEST_NEWS_ARTICLES'|translate}}</span>
+            <h2 class="section-title__title">{{'LEARN_MORE_FROM_BOSTS'|translate}}</h2>
+        </div>
+        <owl-carousel-o [options]="customOptions">
+            <ng-template *ngFor="let article of articles" carouselSlide>
+                <div class="blog-one__single mx-2">
+                    <div class="blog-one__img">
+                        <img [src]="article.image" alt="">
+                        <a routerLink="/articals-list/{{article.id}}">
+                            <span class="blog-one__plus"></span>
+                        </a>
+                        <div class="blog-one__date">
+                            <p>{{getDay(article.created_at)}}<br> <span>{{getMonth(article.created_at)}}</span></p>
+                        </div>
+                    </div>
+                    <div class="blog-one__content">
+                        <h3 class="blog-one__title">
+                            <a routerLink="/articals-list/{{article.id}}">
+                                {{_translateUtil.translateModel(article,['title_en',
+                                'title_ar'])}}
+                            </a>
+                        </h3>
+                        <div class="blog-one__btn-box">
+                            <a routerLink="/articals-list/{{article.id}}">{{'VIEW_MORE'|translate}} <i
+                                    class="fa fa-angle-right"></i></a>
+                        </div>
+                        <div class="blog-one__tag">
+                            <p>
+                                {{_translateUtil.translateModel(article,['subject_en',
+                                'subject_ar'])}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </owl-carousel-o>
+    </div>
+</section>
+<!--Blog One End-->

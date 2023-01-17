@@ -1,0 +1,113 @@
+<!--Contact Page Two Start-->
+<section class="contact-page-two">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-4 col-lg-5">
+                <div class="contact-page-two__left">
+                    <div class="section-title text-left">
+                        <span class="section-title__tagline">{{'CONTACT_NOW'|translate}}</span>
+                        <h2 class="section-title__title">{{'FEEL_FREE_TO_WRITE_US'|translate}}</h2>
+                    </div>
+                    <ul class="list-unstyled contact-page-two__info">
+                        <li>
+                            <div class="icon">
+                                <span class="icon-message"></span>
+                            </div>
+                            <div class="text">
+                                <p><a href="mailto:{{contact?.email}}">{{contact?.email}}</a></p>
+                                <h5>{{'EMAIL'|translate}}</h5>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="icon">
+                                <span class="icon-phone-call"></span>
+                            </div>
+                            <div class="text">
+                                <p>{{'CALL_ANYTIME'|translate}}</p>
+                                <h5><a href="tel:{{contact?.first_phone}}">{{contact?.first_phone}}</a></h5>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="icon">
+                                <span class="icon-location-1"></span>
+                            </div>
+                            <div class="text">
+                                <p>{{'ADDRESS'|translate}}</p>
+                                <h5>{{contact?.address}}</h5>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class='col-xl-8 col-lg-7'>
+                <div class="contact-page-two__right">
+                    <form [formGroup]="form" class="comment-one__form">
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="comment-form__input-box">
+                                    <input formControlName="name" [class.is-invalid]="name?.invalid&&name?.touched"
+                                        type="text" placeholder="{{'NAME'|translate}}" name="name">
+                                    <div class="invalid-feedback text-danger">
+                                        {{_translateUtil.translate(['NAME','REQUIRED'])}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="comment-form__input-box">
+                                    <input formControlName="email" [class.is-invalid]="email?.invalid&&email?.touched"
+                                        type="text" placeholder="{{'EMAIL'|translate}}" name="email">
+                                    <div class="invalid-feedback text-danger">
+                                        <ng-container *ngIf="email?.hasError('required')">
+                                            {{_translateUtil.translate(['EMAIL','REQUIRED'])}}
+                                        </ng-container>
+                                        <ng-container *ngIf="email?.hasError('email')&&!email?.hasError('required')">
+                                            {{_translateUtil.translate(['EMAIL','NOT_VALID'])}}
+                                        </ng-container>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="comment-form__input-box">
+                                    <input formControlName="phone" [class.is-invalid]="phone?.invalid&&phone?.touched"
+                                        type="text" placeholder="{{'PHONE'|translate}}" name="phone">
+                                    <div class="invalid-feedback text-danger">
+                                        <ng-container *ngIf="phone?.hasError('required')">
+                                            {{_translateUtil.translate(['PHONE','REQUIRED'])}}
+                                        </ng-container>
+                                        <ng-container *ngIf="phone?.hasError('pattern')&&!phone?.hasError('required')">
+                                            {{_translateUtil.translate(['PHONE','NOT_VALID'])}}
+                                        </ng-container>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="comment-form__input-box">
+                                    <input formControlName="subject"
+                                        [class.is-invalid]="subject?.invalid&&subject?.touched" type="text"
+                                        placeholder="{{'SUBJECT'|translate}}">
+                                    <div class="invalid-feedback text-danger">
+                                        {{_translateUtil.translate(['SUBJECT','REQUIRED'])}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="comment-form__input-box text-message-box">
+                                    <textarea formControlName="message" name="message"
+                                        placeholder="{{'WRTIE_MESSAGE'|translate}}"></textarea>
+                                </div>
+                                <div class="comment-form__btn-box">
+                                    <button (click)="store()" type="button"
+                                        class="thm-btn comment-form__btn">{{'SEND_ORDER'|translate}}
+                                        <i class="fa fa-angle-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Contact Page Two End-->

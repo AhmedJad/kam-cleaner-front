@@ -1,0 +1,43 @@
+<div class="counters-table container-fluid">
+    <div class="controls">
+        <div class="actions">
+            <button class="rounded-circle border" *ngFor="let action of actions" (click)="onActionClicked(action.id)">
+                <i [class]="action.icon"></i>
+            </button>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table id="printTable" class="table">
+            <thead class="table-light text-secondary">
+                <tr>
+                    <th scope="col">{{'ICON'|translate}}</th>
+                    <th scope="col">{{'TITLE'|translate}}</th>
+                    <th scope="col">{{'TITLE'|translate}}</th>
+                    <th scope="col">{{'COUNTERS'|translate}}</th>
+                    <th scope="col">{{'ACTIONS'|translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let i=index;let counter of counters">
+                    <td class="icon"><i class="text-secondary" [class]="counter.icon"></i></td>
+                    <td>{{counter.title_ar}}</td>
+                    <td>{{counter.title_en}}</td>
+                    <td>{{counter.counter}}</td>
+                    <td class="actions">
+                        <div class="btns">
+                            <button class="fs-9 border" *ngFor="let action of tableActions"
+                                (click)="onActionClicked(action.id,counter,i)">
+                                <i [class]="action.icon"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <counter-form [selectedCounter]="selectedCounter" (saved)="onCounterSaved($event)" (onClose)="counterForm='none'"
+        [displayStyle]="counterForm">
+    </counter-form>
+    <counter-delete-confirmation (deleteConfirmed)="delete()" (onClose)="deleteModal='none'"
+        [displayStyle]="deleteModal"></counter-delete-confirmation>
+</div>

@@ -1,0 +1,56 @@
+<!--Team One Start-->
+<section *ngIf="employees.length>0" class="team-one">
+    <div class="team-one__bubbles wow slideInRight" data-wow-delay="100ms" data-wow-duration="2500ms"
+        style="background-image: url(assets/images/shapes/team-one-bubbles.png);">
+    </div>
+    <div class="team-one__shape-bg" style="background-image: url(assets/images/shapes/team-one-shape-bg.png);">
+    </div>
+    <div class="team-one-start-1 zoominout"><img src="assets/images/shapes/team-one-star-1.png" alt=""></div>
+    <div class="team-one-start-2 zoominout-2"><img src="assets/images/shapes/team-one-star-2.png" alt=""></div>
+    <div class="team-one-start-3 zoominout"><img src="assets/images/shapes/team-one-star-3.png" alt=""></div>
+    <div class="team-one-start-4 zoominout-2"><img src="assets/images/shapes/team-one-star-4.png" alt=""></div>
+    <div class="team-one-start-5 zoominout"><img src="assets/images/shapes/team-one-star-5.png" alt=""></div>
+    <div class="container">
+        <div class="section-title text-center">
+            <span class="section-title__tagline">{{'WE_HAVE_AWSOME_TEAM_MEMBER'|translate}}</span>
+            <h2 class="section-title__title">
+                {{'MEET_OUR_EXPERIENCE_TEAM'|translate}}
+            </h2>
+        </div>
+        <div class="row">
+            <!--Team One Single Start-->
+            <div *ngFor="let employee of employees" class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp"
+                data-wow-delay="100ms">
+                <div class="team-one__single">
+                    <div class="team-one__img">
+                        <img [src]="employee.image" alt="">
+                        <ul class="list-unstyled team-one__social">
+                            <li><a [href]="employee.facebook"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a [href]="employee.twitter"><i class="fab fa-twitter"></i></a></li>
+                            <li><a [href]="employee.instgram"><i class="fab fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="team-one__content">
+                        <div class="team-one__title-box">
+                            <h3 class="team-one__name">
+                                <a>
+                                    {{employee.name}}
+                                </a>
+                            </h3>
+                            <ul class="list-unstyled team-one__social-two">
+                                <li><a href="#"><i class="fas fa-share-alt"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="team-one__sub-title-box">
+                            <p class="team-one__sub-title">
+                                {{_translateUtil.translateModel(employee,['job_en','job_ar'])}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Team One Single End-->
+        </div>
+    </div>
+</section>
+<!--Team One End-->

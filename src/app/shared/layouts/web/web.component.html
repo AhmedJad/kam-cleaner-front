@@ -1,0 +1,14 @@
+<loader></loader>
+<div class="web-container" [dir]="_translateUtil.getDir()">
+    <div class="custom-cursor__cursor"></div>
+    <div class="custom-cursor__cursor-two"></div>
+    <!--Page wrapper Start -->
+    <div class="page-wrapper">
+        <app-header [contact]="contact"></app-header>
+        <router-outlet></router-outlet>
+        <google-map></google-map>
+        <information [contact]="contact"></information>
+        <app-footer [contact]="contact"></app-footer>
+    </div>
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
+</div>

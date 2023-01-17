@@ -1,0 +1,29 @@
+<!--Gallery Page Start-->
+<section *ngIf="galleries.length>0" class="gallery-container gallery-page">
+    <div class="container">
+        <div class="row">
+            <!--Gallery Page Single Start-->
+            <div *ngFor="let i=index;let gallery of galleries | paginate: { id: 'paging',
+            itemsPerPage: itemsPerPage,
+            currentPage: page,
+            totalItems: totalItems }" class="col-xl-4 col-lg-6 col-md-6">
+                <div class="gallery-page__single">
+                    <div class="gallery-page__img">
+                        <img [src]="gallery.image" alt="">
+                        <div class="gallery-page__icon">
+                            <a target="_blank" class="img-popup" [href]="gallery.image"><span
+                                    class="icon-plus-symbol"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Gallery Page Single End-->
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        <pagination-controls id="paging" [responsive]="true" previousLabel="" nextLabel=""
+            (pageChange)="onPageChange($event)">
+        </pagination-controls>
+    </div>
+</section>
+<!--Gallery Page End-->

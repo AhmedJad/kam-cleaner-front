@@ -1,0 +1,126 @@
+<div class="article-form">
+    <div class="modal" [ngStyle]="{'display':displayStyle}" id="studentFormModal" tabindex="-1"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <form [formGroup]="form" enctype="multipart/form-data" (submit)="save()">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-secondary" id="exampleModalLabel">{{'ARTICLE_FORM'|translate}}</h5>
+                        <button type="button" (click)="close()" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-4 mb-3">
+                                <div class="image">
+                                    <img class="border-bottom" [src]="imagePath">
+                                    <div class="image-upload">
+                                        <label for="image">
+                                            <i class="fa fa-camera"></i>
+                                        </label>
+                                        <input
+                                            accept="image/apng, image/avif, image/gif, image/jpeg, image/png, image/svg+xml, image/webp"
+                                            (change)="onFileChanged($event)" type="file" id="image">
+                                    </div>
+                                </div>
+                                <div [class]="{'text-secondary':!invalidImage,'text-danger':invalidImage}">
+                                    {{ "ENITER_VALID_IMAGE_SIZE" |translate:{size:'770px * 420px'} }}
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">{{'TITLE_AR'|translate}}</label>
+                                            <input
+                                                [class.is-invalid]="(title_ar?.invalid||titleArExist)&&title_ar?.touched"
+                                                type="text" formControlName="title_ar" type="text" class="form-control"
+                                                id="exampleInputEmail1" aria-describedby="emailHelp" name="title_ar">
+                                            <div class="invalid-feedback text-danger">
+                                                <ng-container *ngIf="title_ar?.hasError('required')">
+                                                    {{_translateUtil.translate(['TITLE_AR','REQUIRED'])}}
+                                                </ng-container>
+                                                <ng-container *ngIf="titleArExist&&!title_ar?.hasError('required')">
+                                                    {{_translateUtil.translate(['TITLE_AR','EXIST'])}}
+                                                </ng-container>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">{{'TITLE_EN'|translate}} </label>
+                                            <input formControlName="title_en"
+                                                [class.is-invalid]="(title_en?.invalid||titleEnExist)&&title_en?.touched"
+                                                type="text" class="form-control" id="exampleInputEmail1"
+                                                aria-describedby="emailHelp" name="title_en">
+                                            <div class="invalid-feedback text-danger">
+                                                <ng-container *ngIf="title_en?.hasError('required')">
+                                                    {{_translateUtil.translate(['TITLE_EN','REQUIRED'])}}
+                                                </ng-container>
+                                                <ng-container *ngIf="titleEnExist&&!title_en?.hasError('required')">
+                                                    {{_translateUtil.translate(['TITLE_EN','EXIST'])}}
+                                                </ng-container>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">{{'SUBJECT_AR'|translate}} </label>
+                                            <input formControlName="subject_ar"
+                                                [class.is-invalid]="subject_ar?.invalid&&subject_ar?.touched"
+                                                type="text" class="form-control" id="exampleInputEmail1"
+                                                aria-describedby="emailHelp" name="subject_ar">
+                                            <div class="invalid-feedback text-danger">
+                                                {{_translateUtil.translate(['SUBJECT_AR','REQUIRED'])}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">{{'SUBJECT_EN'|translate}} </label>
+                                            <input formControlName="subject_en"
+                                                [class.is-invalid]="subject_en?.invalid&&subject_en?.touched"
+                                                type="text" class="form-control" id="exampleInputEmail1"
+                                                aria-describedby="emailHelp" name="subject_en">
+                                            <div class="invalid-feedback text-danger">
+                                                {{_translateUtil.translate(['SUBJECT_EN','REQUIRED'])}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">{{'DESCRIPTION_AR'|translate}}</label>
+                                            <textarea formControlName="description_ar"
+                                                [class.is-invalid]="description_ar?.invalid&&description_ar?.touched"
+                                                type="text" class="form-control" id="exampleInputEmail1"
+                                                aria-describedby="emailHelp" name="description_ar" rows="3"></textarea>
+                                            <div class="invalid-feedback text-danger">
+                                                {{_translateUtil.translate(['DESCRIPTION_AR','REQUIRED'])}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">{{'DESCRIPTION_EN'|translate}}</label>
+                                            <textarea formControlName="description_en"
+                                                [class.is-invalid]="description_en?.invalid&&description_en?.touched"
+                                                type="text" class="form-control" id="exampleInputEmail1"
+                                                aria-describedby="emailHelp" name="description_en" rows="3"></textarea>
+                                            <div class="invalid-feedback text-danger">
+                                                {{_translateUtil.translate(['DESCRIPTION_EN','REQUIRED'])}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" modal-footer">
+                        <button type="submit" class="btn btn-primary">{{'SAVE_CHANGES'|translate}}</button>
+                        <button (click)="close()" type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">{{'CLOSE'|translate}}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+.order-details {
+    * {
+        color: #888888;
+    }
+    button {
+        color: white;
+    }
+    .modal {
+        display: block;
+    }
+    .form-control {
+        padding: 10px;
+    }
+    .form-group {
+        margin-bottom: 10px;
+        label {
+            margin-bottom: 5px;
+        }
+    }
+    .modal-dialog {
+        overflow-y: initial !important;
+    }
+    .modal-body {
+        max-height: calc(100vh - 200px);
+        overflow-y: auto;
+    }
+    input:read-only,textarea:read-only {
+        background-color: transparent;
+    }
+}

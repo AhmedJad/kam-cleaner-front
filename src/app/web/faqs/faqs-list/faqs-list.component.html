@@ -1,0 +1,62 @@
+<!--FAQ Page Start-->
+<section *ngIf="faqs.length>0" class="faq-container faq-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-8 col-lg-7">
+                <div class="faq-page__left">
+                    <div class="accrodion-grp" data-grp-name="faq-one-accrodion">
+                        <div *ngFor="let i=index;let faq of faqs | paginate: { id: 'paging',
+                        itemsPerPage: itemsPerPage,
+                        currentPage: page,
+                        totalItems: totalItems }" class="accrodion" [class.active]="i==0">
+                            <div class="accrodion-title">
+                                <h4>
+                                    {{_translateUtil.translateModel(faq,['question_en',
+                                    'question_ar'])}}
+                                </h4>
+                            </div>
+                            <div class="accrodion-content">
+                                <div class="inner">
+                                    <p>
+                                        {{_translateUtil.translateModel(faq,['answer_en',
+                                        'answer_ar'])}}
+                                    </p>
+                                </div><!-- /.inner -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center mt-5">
+                        <pagination-controls id="paging" [responsive]="true" previousLabel="" nextLabel=""
+                            (pageChange)="onPageChange($event)">
+                        </pagination-controls>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-5">
+                <div class="service-details__left">
+                    <div class="service-details__need-help">
+                        <div class="service-details__need-help-bg"
+                            style="background-image: url(assets/images/backgrounds/service-details-need-help-bg.jpg)">
+                        </div>
+                        <div class="service-details__need-help-icon">
+                            <span class="icon-phone-call"></span>
+                        </div>
+                        <h2 class="service-details__need-help-title">
+                            {{'BEST_SOLUTION_TO_YOUR_HOUSE'|translate}}
+                        </h2>
+                        <div class="service-details__need-help-contact">
+                            <p>{{'CALL_ANYTIME'|translate}}</p>
+                            <a href="tel:{{contact?.phone}}">{{contact?.phone}}</a>
+                        </div>
+                    </div>
+                    <div class="service-details__download">
+                        <a routerLink="/contact-us-info" class="thm-btn service-details__btn">
+                            {{'SEND_YOUR_ORDER'|translate}}
+                            <i class="fa fa-angle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--FAQ Page End-->

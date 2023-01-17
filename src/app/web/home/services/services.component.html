@@ -1,0 +1,35 @@
+<!--Feature One Start-->
+<section *ngIf="services.length>0" class="feature-one">
+    <div class="container">
+        <div class="row">
+            <div *ngFor="let service of services" class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="100ms">
+                <div class="feature-one__single">
+                    <div class="feature-one-single-bg"
+                        style="background-image: url(assets/images/backgrounds/feature-one-single-bg.jpg);">
+                    </div>
+                    <div class="feature-one__icon">
+                        <img class="feature-one__icon-image" [src]="service.image" alt="">
+                        <div class="feature-one__icon-shape">
+                            <img src="assets/images/shapes/feature-one-icon-shape.png" alt="">
+                        </div>
+                    </div>
+                    <div class="feature-one__title-box">
+                        <div class="feature-one__title-border"></div>
+                        <h3 class="feature-one__title">
+                            <a>
+                                {{_translateUtil.translateModel(service,['title_en','title_ar'])}}
+                            </a>
+                        </h3>
+                    </div>
+                    <p class="feature-one__text">
+                        {{_translateUtil.translateModel(service,['description_en','description_ar'])}}
+                    </p>
+                    <div class="feature-one__btn-box">
+                        <a target="_blank" [href]="service.url" class="feature-one__btn">{{'VIEW_MORE'|translate}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Feature One End-->

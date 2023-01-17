@@ -1,0 +1,25 @@
+<!--Counter One Start-->
+<section *ngIf="counters.length>0" class="counter-two">
+    <div class="container">
+        <div class="counter-two__inner">
+            <ul class="list-unstyled counter-two__list">
+                <li *ngFor="let counter of counters">
+                    <div class="counter-two__icon">
+                        <span [class]="counter.icon"></span>
+                    </div>
+                    <div class="counter-two__count-box">
+                        <div class="counter-two__count-box-inner">
+                            <h3 class="odometer" [attr.data-count]="counter.counter">00</h3>
+                            <span class="counter-two__plus">+</span>
+                        </div>
+                        <p class="counter-two__text">
+                            {{_translateUtil.translateModel(counter,['title_en','title_ar'])}}
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <hr class="mb-5">
+</section>
+<!--Counter One End-->

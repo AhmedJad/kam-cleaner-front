@@ -1,0 +1,31 @@
+.main-header,
+.mobile-nav__wrapper {
+    img {
+        width: 150px;
+        height: 140px;
+    }
+}
+.main-header,
+.mobile-nav__wrapper,
+.stricky-header {
+    .lang {
+        img {
+            width: 24px;
+            height: 18px;
+        }
+    }
+    .end-list {
+        li {
+            margin-right: 0;
+            margin-left: 0;
+            margin: 0 8px;
+        }
+    }
+    i{
+        font-size: 19px;
+    }
+}
+.dropdown-toggle {
+    color: #b1c2f5 !important;
+    border: 1px solid #b1c2f5;
+}

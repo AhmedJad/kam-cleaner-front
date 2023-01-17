@@ -1,0 +1,56 @@
+<div class="products-table container-fluid">
+    <div class="controls">
+        <div class="search">
+            <input [formControl]="searchCtrl" type="text" placeholder="{{'SEARCH'|translate}}">
+            <i class="fa fa-search"></i>
+        </div>
+        <div class="actions">
+            <button class="rounded-circle border" *ngFor="let action of actions" (click)="onActionClicked(action.id)">
+                <i [class]="action.icon"></i>
+            </button>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table id="printTable" class="table">
+            <thead class="table-light text-secondary">
+                <tr>
+                    <th scope="col">{{'IMAGE'|translate}}</th>
+                    <th scope="col">{{'ICON'|translate}}</th>
+                    <th scope="col">{{'NAME'|translate}}</th>
+                    <th scope="col">{{'NAME'|translate}}</th>
+                    <th scope="col">{{'PRICE'|translate}}</th>
+                    <th scope="col">{{'ACTIONS'|translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let i=index;let product of products | paginate: { id: 'paging',
+          itemsPerPage: itemsPerPage,
+          currentPage: page,
+          totalItems: totalItems }">
+                    <td><img [src]="product.image" /></td>
+                    <td class="icon"><i [class]="product.icon"></i></td>
+                    <td>{{product.name_ar}}</td>
+                    <td>{{product.name_en}}</td>
+                    <td>{{product.price}}</td>
+                    <td class="actions">
+                        <div class="btns">
+                            <button class="fs-9 border" *ngFor="let action of tableActions"
+                                (click)="onActionClicked(action.id,product,i)">
+                                <i [class]="action.icon"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="d-flex justify-content-end">
+        <pagination-controls id="paging" [responsive]="true" previousLabel="" nextLabel=""
+            (pageChange)="onPageChange($event)">
+        </pagination-controls>
+    </div>
+    <product-form [selectedProduct]="selectedProduct" (saved)="onProductSaved($event)" (onClose)="onFormClosed()"
+        [displayStyle]="productForm"></product-form>
+    <product-delete-confirmation (deleteConfirmed)="delete()" (onClose)="deleteModal='none'"
+        [displayStyle]="deleteModal"></product-delete-confirmation>
+</div>

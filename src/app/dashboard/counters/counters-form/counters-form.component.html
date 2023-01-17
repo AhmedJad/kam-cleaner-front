@@ -1,0 +1,79 @@
+<div class="counters-form">
+    <div class="modal" [ngStyle]="{'display':displayStyle}" id="studentFormModal" tabindex="-1"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <form [formGroup]="form" enctype="multipart/form-data" (submit)="save()">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-secondary" id="exampleModalLabel">{{'COUNTERS_FORM'|translate}}</h5>
+                        <button type="button" (click)="close()" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <label class="mb-2">{{'ICON'|translate}}</label>
+                                <div class="icons mb-2">
+                                    <i class="p-2 border" (click)="icon?.setValue(_icon)" *ngFor="let _icon of icons"
+                                        [class]="_icon" [class.selected]="icon?.value==_icon"></i>
+                                    <div *ngIf="icon?.hasError('required')&&icon?.touched" class="text-danger">
+                                        {{_translateUtil.translate(['ICON','REQUIRED'])}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">{{'TITLE_AR'|translate}}</label>
+                                    <input [class.is-invalid]="(title_ar?.invalid||titleArExist)&&title_ar?.touched"
+                                        type="text" formControlName="title_ar" type="text" class="form-control"
+                                        id="exampleInputEmail1" aria-describedby="emailHelp" name="title_ar">
+                                    <div class="invalid-feedback text-danger">
+                                        <ng-container *ngIf="title_ar?.hasError('required')">
+                                            {{_translateUtil.translate(['TITLE_AR','REQUIRED'])}}
+                                        </ng-container>
+                                        <ng-container *ngIf="titleArExist&&!title_ar?.hasError('required')">
+                                            {{_translateUtil.translate(['TITLE_AR','EXIST'])}}
+                                        </ng-container>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">{{'TITLE_EN'|translate}} </label>
+                                    <input formControlName="title_en"
+                                        [class.is-invalid]="(title_en?.invalid||titleEnExist)&&title_en?.touched"
+                                        type="text" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" name="title_en">
+                                    <div class="invalid-feedback text-danger">
+                                        <ng-container *ngIf="title_en?.hasError('required')">
+                                            {{_translateUtil.translate(['TITLE_EN','REQUIRED'])}}
+                                        </ng-container>
+                                        <ng-container *ngIf="titleEnExist&&!title_en?.hasError('required')">
+                                            {{_translateUtil.translate(['TITLE_EN','EXIST'])}}
+                                        </ng-container>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">{{'COUNTERS'|translate}} </label>
+                                    <input formControlName="counter"
+                                        [class.is-invalid]="counter?.invalid&&counter?.touched" type="number"
+                                        class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                        name="counter">
+                                    <div class="invalid-feedback text-danger">
+                                        {{_translateUtil.translate(['COUNTERS','REQUIRED'])}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" modal-footer">
+                        <button type="submit" class="btn btn-primary">{{'SAVE_CHANGES'|translate}}</button>
+                        <button (click)="close()" type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">{{'CLOSE'|translate}}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

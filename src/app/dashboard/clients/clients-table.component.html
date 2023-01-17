@@ -1,0 +1,41 @@
+<div class="clients-table container-fluid">
+    <div class="controls">
+        <div class="actions">
+            <button class="rounded-circle border" *ngFor="let action of actions" (click)="onActionClicked(action.id)">
+                <i [class]="action.icon"></i>
+            </button>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table id="printTable" class="table">
+            <thead class="table-light text-secondary">
+                <tr>
+                    <th scope="col">{{'ICON'|translate}}</th>
+                    <th scope="col">{{'NAME'|translate}}</th>
+                    <th scope="col">{{'NAME'|translate}}</th>
+                    <th scope="col">{{'ACTIONS'|translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let i=index;let client of clients">
+                    <td class="icon"><i class="text-secondary" [class]="client.icon"></i></td>
+                    <td>{{client.name_ar}}</td>
+                    <td>{{client.name_en}}</td>
+                    <td class="actions">
+                        <div class="btns">
+                            <button class="fs-9 border" *ngFor="let action of tableActions"
+                                (click)="onActionClicked(action.id,client,i)">
+                                <i [class]="action.icon"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <client-form [selectedClient]="selectedClient" (saved)="onClientSaved($event)" (onClose)="clientForm='none'"
+        [displayStyle]="clientForm">
+    </client-form>
+    <client-delete-confirmation (deleteConfirmed)="delete()" (onClose)="deleteModal='none'"
+        [displayStyle]="deleteModal"></client-delete-confirmation>
+</div>

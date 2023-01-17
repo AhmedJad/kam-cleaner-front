@@ -1,0 +1,19 @@
+<!--Brand One Start-->
+<section *ngIf="logos.length>0" class="brand-one brand-one-container pt-4">
+    <div class="container">
+        <div class="brand-one__inner">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="brand-one__main-content">
+                        <owl-carousel-o [options]="customOptions">
+                            <ng-template *ngFor="let logo of logos" carouselSlide>
+                                <img class="border" [src]="logo.image" alt="">
+                            </ng-template>
+                        </owl-carousel-o>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Brand One End-->

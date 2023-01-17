@@ -1,0 +1,41 @@
+<div class="services-table container-fluid">
+    <div class="controls">
+        <div class="actions">
+            <button class="rounded-circle border" *ngFor="let action of actions" (click)="onActionClicked(action.id)">
+                <i [class]="action.icon"></i>
+            </button>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table id="printTable" class="table">
+            <thead class="table-light text-secondary">
+                <tr>
+                    <th scope="col">{{'IMAGE'|translate}}</th>
+                    <th scope="col">{{'TITLE'|translate}}</th>
+                    <th scope="col">{{'TITLE'|translate}}</th>
+                    <th scope="col">{{'ACTIONS'|translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let i=index;let service of services">
+                    <td><img [src]="service.image" /></td>
+                    <td>{{service.title_ar}}</td>
+                    <td>{{service.title_en}}</td>
+                    <td class="actions">
+                        <div class="btns">
+                            <button class="fs-9 border" *ngFor="let action of tableActions"
+                                (click)="onActionClicked(action.id,service,i)">
+                                <i [class]="action.icon"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <services-form [selectedService]="selectedService" (saved)="onServiceSaved($event)" (onClose)="serviceForm='none'"
+        [displayStyle]="serviceForm">
+    </services-form>
+    <services-delete-confirmation (deleteConfirmed)="delete()" (onClose)="deleteModal='none'"
+        [displayStyle]="deleteModal"></services-delete-confirmation>
+</div>

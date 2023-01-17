@@ -1,0 +1,52 @@
+<div *ngIf="selectedContactForm" class="contact-form-details">
+    <div class="modal" [ngStyle]="{'display':displayStyle}" id="studentFormModal" tabindex="-1"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-secondary" id="exampleModalLabel">{{'CONTACT_DETAILS'|translate}}</h5>
+                    <button type="button" (click)="close()" class="btn-close" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">{{'NAME'|translate}}</label>
+                                <input type="text" readonly [value]="selectedContactForm.name" type="text"
+                                    class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">{{'EMAIL'|translate}}</label>
+                                <input type="text" readonly [value]="selectedContactForm.email" type="text"
+                                    class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">{{'PHONE'|translate}}</label>
+                                <input type="text" readonly [value]="selectedContactForm.phone" type="text"
+                                    class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">{{'SUBJECT'|translate}}</label>
+                                <input type="text" readonly [value]="selectedContactForm.subject" type="text"
+                                    class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">{{'MESSAGE'|translate}}</label>
+                                <textarea readonly class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" [value]="selectedContactForm.message"
+                                    rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

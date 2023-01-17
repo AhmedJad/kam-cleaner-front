@@ -1,0 +1,43 @@
+<!--Testimonial One Start-->
+<section *ngIf="reviews.length>0" class="testimonial-one">
+    <div class="testimonial-shape wow slideInRight" data-wow-delay="100ms" data-wow-duration="2500ms"
+        style="background-image: url(assets/images/shapes/testimonial-shape.png);">
+    </div>
+    <div class="container">
+        <div class="section-title text-left">
+            <span class="section-title__tagline">{{"WHAT_THEY_ARE_SAYING"|translate}}</span>
+            <h2 class="section-title__title">{{"SOME_FEEDBACK"|translate}}</h2>
+        </div>
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="testimonial-one__inner">
+                    <owl-carousel-o [options]="customOptions">
+                        <ng-template *ngFor="let review of reviews" carouselSlide>
+                            <!--Testimonial One Single Start-->
+                            <div class="mx-2 testimonial-one__single">
+                                <p class="testimonial-one__text">
+                                    {{_translateUtil.translateModel(review,['review_en','review_ar'])}}
+                                </p>
+                                <div class="testimonial-one__client-details">
+                                    <h3 class="testimonial-one__client-name">{{review.name}}</h3>
+                                    <p class="testimonial-one__client-sub-title">
+                                    {{_translateUtil.translateModel(review,['job_en','job_ar'])}}
+                                    </p>
+                                </div>
+                                <div class="testimonial-one__client-img">
+                                    <img [src]="review.image" alt="">
+                                    <div class="testimonial-one__client-img-boxs"></div>
+                                </div>
+                                <div class="testimonial-one__quote">
+                                    <span class="icon-quote"></span>
+                                </div>
+                            </div>
+                            <!--Testimonial One Single End-->
+                        </ng-template>
+                    </owl-carousel-o>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Blog One Start-->

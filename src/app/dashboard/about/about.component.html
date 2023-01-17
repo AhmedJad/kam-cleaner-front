@@ -1,0 +1,184 @@
+<div class="about-form container">
+    <h5 class="py-4 border-bottom mb-4">{{'ABOUT_US'|translate}}</h5>
+    <form [formGroup]="form" enctype="multipart/form-data" (submit)="save()">
+        <div class="row">
+            <div class="col-lg-4 mb-3">
+                <div class="image">
+                    <img class="border-bottom" [src]="imagePath">
+                    <div class="image-upload">
+                        <label for="image">
+                            <i class="fa fa-camera"></i>
+                        </label>
+                        <input
+                            accept="image/apng, image/avif, image/gif, image/jpeg, image/png, image/svg+xml, image/webp"
+                            (change)="onFileChanged($event)" type="file" id="image">
+                    </div>
+                </div>
+                <div [class]="{'text-secondary':!invalidImage,'text-danger':invalidImage}">
+                    {{ "ENITER_VALID_IMAGE_SIZE" |translate:{size:'1292px * 800px'} }}
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">{{'TITLE_AR'|translate}}</label>
+                            <input [class.is-invalid]="title_ar?.invalid&&title_ar?.touched" type="text"
+                                formControlName="title_ar" type="text" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" name="title_ar">
+                            <div class="invalid-feedback text-danger">
+                                {{_translateUtil.translate(['TITLE_AR','REQUIRED'])}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">{{'TITLE_EN'|translate}} </label>
+                            <input formControlName="title_en" [class.is-invalid]="title_en?.invalid&&title_en?.touched"
+                                type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                name="title_en">
+                            <div class="invalid-feedback text-danger">
+                                {{_translateUtil.translate(['TITLE_EN','REQUIRED'])}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">{{'PHONE'|translate}} </label>
+                            <input formControlName="phone" [class.is-invalid]="phone?.invalid&&phone?.touched"
+                                type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                name="phone">
+                            <div class="invalid-feedback text-danger">
+                                <ng-container *ngIf="phone?.hasError('required')">
+                                    {{_translateUtil.translate(['PHONE','REQUIRED'])}}
+                                </ng-container>
+                                <ng-container *ngIf="phone?.hasError('pattern')&&!phone?.hasError('required')">
+                                    {{_translateUtil.translate(['PHONE','NOT_VALID'])}}
+                                </ng-container>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">{{'DESCRIPTION_AR'|translate}}</label>
+                            <textarea formControlName="description_ar"
+                                [class.is-invalid]="description_ar?.invalid&&description_ar?.touched" type="text"
+                                class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                name="description_ar" rows="5"></textarea>
+                            <div class="invalid-feedback text-danger">
+                                {{_translateUtil.translate(['DESCRIPTION_AR','REQUIRED'])}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">{{'DESCRIPTION_EN'|translate}}</label>
+                            <textarea formControlName="description_en"
+                                [class.is-invalid]="description_en?.invalid&&description_en?.touched" type="text"
+                                class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                name="description_en" rows="5"></textarea>
+                            <div class="invalid-feedback text-danger">
+                                {{_translateUtil.translate(['DESCRIPTION_EN','REQUIRED'])}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">{{'FEATURE_AR'|translate}}</label>
+                            <input [class.is-invalid]="first_feature_ar?.invalid&&first_feature_ar?.touched" type="text"
+                                formControlName="first_feature_ar" type="text" class="form-control"
+                                id="exampleInputEmail1" aria-describedby="emailHelp" name="first_feature_ar">
+                            <div class="invalid-feedback text-danger">
+                                {{_translateUtil.translate(['FEATURE_AR','REQUIRED'])}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">{{'FEATURE_EN'|translate}}</label>
+                            <input [class.is-invalid]="first_feature_en?.invalid&&first_feature_en?.touched" type="text"
+                                formControlName="first_feature_en" type="text" class="form-control"
+                                id="exampleInputEmail1" aria-describedby="emailHelp" name="first_feature_en">
+                            <div class="invalid-feedback text-danger">
+                                {{_translateUtil.translate(['FEATURE_EN','REQUIRED'])}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">{{'FEATURE_AR'|translate}}</label>
+                            <input [class.is-invalid]="second_feature_ar?.invalid&&second_feature_ar?.touched"
+                                type="text" formControlName="second_feature_ar" type="text" class="form-control"
+                                id="exampleInputEmail1" aria-describedby="emailHelp" name="second_feature_ar">
+                            <div class="invalid-feedback text-danger">
+                                {{_translateUtil.translate(['FEATURE_AR','REQUIRED'])}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">{{'FEATURE_EN'|translate}}</label>
+                            <input [class.is-invalid]="second_feature_en?.invalid&&second_feature_en?.touched"
+                                type="text" formControlName="second_feature_en" type="text" class="form-control"
+                                id="exampleInputEmail1" aria-describedby="emailHelp" name="second_feature_en">
+                            <div class="invalid-feedback text-danger">
+                                {{_translateUtil.translate(['FEATURE_EN','REQUIRED'])}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">{{'FEATURE_AR'|translate}}</label>
+                            <input [class.is-invalid]="third_feature_ar?.invalid&&third_feature_ar?.touched" type="text"
+                                formControlName="third_feature_ar" type="text" class="form-control"
+                                id="exampleInputEmail1" aria-describedby="emailHelp" name="third_feature_ar">
+                            <div class="invalid-feedback text-danger">
+                                {{_translateUtil.translate(['FEATURE_AR','REQUIRED'])}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">{{'FEATURE_EN'|translate}}</label>
+                            <input [class.is-invalid]="third_feature_en?.invalid&&third_feature_en?.touched" type="text"
+                                formControlName="third_feature_en" type="text" class="form-control"
+                                id="exampleInputEmail1" aria-describedby="emailHelp" name="third_feature_en">
+                            <div class="invalid-feedback text-danger">
+                                {{_translateUtil.translate(['FEATURE_EN','REQUIRED'])}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">{{'FEATURE_AR'|translate}}</label>
+                            <input [class.is-invalid]="fourth_feature_ar?.invalid&&fourth_feature_ar?.touched"
+                                type="text" formControlName="fourth_feature_ar" type="text" class="form-control"
+                                id="exampleInputEmail1" aria-describedby="emailHelp" name="fourth_feature_ar">
+                            <div class="invalid-feedback text-danger">
+                                {{_translateUtil.translate(['FEATURE_AR','REQUIRED'])}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">{{'FEATURE_EN'|translate}}</label>
+                            <input [class.is-invalid]="fourth_feature_en?.invalid&&fourth_feature_en?.touched"
+                                type="text" formControlName="fourth_feature_en" type="text" class="form-control"
+                                id="exampleInputEmail1" aria-describedby="emailHelp" name="fourth_feature_en">
+                            <div class="invalid-feedback text-danger">
+                                {{_translateUtil.translate(['FEATURE_EN','REQUIRED'])}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="submit">
+            <button type="submit" class="btn btn-primary">{{'SAVE_CHANGES'|translate}}</button>
+        </div>
+    </form>
+</div>

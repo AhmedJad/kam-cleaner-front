@@ -1,0 +1,49 @@
+<app-page-header header="{{'SHOPPING_CART'|translate}}"></app-page-header>
+<app-payment-alert></app-payment-alert>
+<div class="cart-container py-5" *ngIf="cartInfo.products.length>0">
+    <div class="card">
+        <div class="row">
+            <div class="col-md-8 cart">
+                <div class="title">
+                    <div class="row">
+                        <div class="col">
+                            <h4><b>{{'SHOPPING_CART'|translate}}</b></h4>
+                        </div>
+                    </div>
+                </div>
+                <div *ngFor="let product of cartInfo.products;let i=index" class="row border-top border-bottom">
+                    <div class="row main align-items-center">
+                        <div class="col-2"><img class="img-fluid" [src]="product.image"></div>
+                        <div class="col">
+                            <div class="row text-muted">{{_translateUtil.translateModel(product
+                                ,["name_en","name_ar"])}}</div>
+                        </div>
+                        <div class="col">
+                            &euro; {{product.price}}
+                        </div>
+                        <a href="" (click)="removeItemFromCart($event,product,i)" class="col text-center"><span
+                                class="close">&#10005;</span></a>
+                    </div>
+                </div>
+                <div class="back-to-shop"><a href="#">&leftarrow;</a><span
+                        class="text-muted">{{'HOME'|translate}}</span></div>
+            </div>
+            <div class="col-md-4 summary">
+                <div>
+                    <h5><b>{{'SUMMARY'|translate}}</b></h5>
+                </div>
+                <hr>
+                <div class="row mb-3">
+                    <div class="col">{{'PRODUCTS'|translate}} ({{cartInfo.products.length}})</div>
+                    <div class="col text-right">&euro; {{cartInfo.total_price}}</div>
+                </div>
+                <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                    <div class="col">{{'TOTAL_PRICE'|translate}}</div>
+                    <div class="col text-right">&euro; {{cartInfo.total_price}}</div>
+                </div>
+                <button (click)="cashPayment()" class="btn">{{'CASH_PAYMENT'|translate}}</button>
+                <button (click)="onlinePayment()" class="btn">{{'ONLINE_PAYMENT'|translate}}</button>
+            </div>
+        </div>
+    </div>
+</div>

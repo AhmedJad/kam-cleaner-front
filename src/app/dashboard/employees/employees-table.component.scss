@@ -1,0 +1,91 @@
+.employees-table {
+    ::placeholder {
+        color: #888888;
+    }
+    padding-top: 10px;
+    a {
+        text-decoration: none;
+    }
+    .dropdown-item {
+        &:hover {
+            cursor: pointer;
+        }
+        & {
+            text-align: center;
+        }
+    }
+    table {
+        tr,
+        th {
+            width: 20%;
+            text-align: center;
+            vertical-align: middle;
+        }
+        td {
+            img {
+                width: 70px;
+                height: 70px;
+                border-radius: 3px;
+                padding: 5px;
+                box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+            }
+            button {
+                border-radius: 3px;
+            }
+        }
+    }
+    .actions {
+        i {
+            color:#7b7b7b;
+        }
+        button {
+            width: 31px;
+            height: 31px;
+            border: none;
+            background: none;
+            margin: 2px 5px;
+        }
+    }
+    .controls {
+        .actions {
+            margin-bottom: 8px;
+        }
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        align-items: center;
+        .search {
+            margin-bottom: 10px;
+            i {
+                position: relative;
+                top: 1px;
+                color: #888888;
+            }
+            input {
+                padding: 6px 15px;
+                border: 1px solid #dee2e6 !important;
+                border-radius: 5px;
+            }
+        }
+    }
+    mat-sidenav-content[dir="ltr"] & {
+        .search {
+            i {
+                right: 25px;
+            }
+        }
+    }
+    mat-sidenav-content[dir="rtl"] & {
+        .search {
+            i {
+                left: 25px;
+            }
+        }
+    }
+    .ngx-pagination .current {
+        padding: 0rem 0.625rem;
+    }
+    ol, ul {
+        padding-left: 0rem;
+    }
+}

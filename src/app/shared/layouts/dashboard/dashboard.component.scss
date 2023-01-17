@@ -1,0 +1,105 @@
+.app-container {
+    nav {
+        &[dir="ltr"] {
+            .sidebar-toggle-btn {
+                margin-right: 15px;
+                color: #5f697d !important;
+            }
+            .navbar-nav {
+                margin-left: auto;
+            }
+        }
+        &[dir="rtl"] {
+            .navbar-nav {
+                margin-right: auto;
+            }
+        }
+        .navbar-brand{
+            margin-right: 10px;
+        }
+    }
+    .sidebar-toggle-btn {
+        background: none;
+        border: none;
+    }
+    .navbar-toggler {
+        border: none;
+        position: relative;
+        bottom: 2px;
+    }
+    mat-sidenav {
+        .sidebar-items-container {
+            padding: 10px;
+        }
+        width: 250px;
+        border: none;
+        background: white;
+        color: rgb(95, 105, 125);
+        overflow: auto;
+        &[dir="ltr"] {
+            span {
+                margin-left: 20px;
+            }
+            border-right: 1px solid #dee2e6 !important;
+        }
+        &[dir="rtl"] {
+            border-left: 1px solid #dee2e6 !important;
+            span {
+                margin-right: 20px;
+            }
+        }
+        .sidebar-item {
+            a {
+                transition: 0.3s all;
+                padding: 8px 14px;
+                margin-bottom: 8px;
+                display: inline-block;
+                text-decoration: none;
+                color: rgb(95, 105, 125);
+                width: 100%;
+                &:hover,
+                &.selected {
+                    background-color: #f8f9fa;
+                    border-radius: 5px;
+                }
+            }
+        }
+    }
+    mat-sidenav-container {
+        height: calc(100vh - 63px);
+        background-color: #fff;
+    }
+    .collapse {
+        i {
+            font-size: 11px !important;
+        }
+    }
+    .mat-drawer.mat-drawer-side {
+        z-index: 1 !important;
+    }
+    .nav-link.lang {
+        img {
+            width: 20px;
+            height: 15px;
+        }
+    }
+    .modal-backdrop {
+        z-index: -1 !important;
+    }
+    mat-sidenav-content[dir="rtl"] {
+        .modal .btn-close {
+            margin: 0 !important;
+            margin-right: auto !important;
+        }
+    }
+    .nav-link{
+        i{
+            font-size: 15px !important;
+        }
+    }
+    .submit{
+        padding: 10px 0 20px 0;
+        display: flex;
+        justify-content: flex-end;
+    }
+}

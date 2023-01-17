@@ -1,0 +1,90 @@
+<!--Site Footer Start-->
+<footer class="site-footer">
+    <div class="site-footer-shape-1" style="background-image: url(assets/images/shapes/site-footer-shape-1.png);">
+    </div>
+    <div class="site-footer-shape-two">
+        <img src="assets/images/shapes/site-footer-shape-2.png" alt="">
+    </div>
+    <div class="site-footer__top">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
+                    <div class="footer-widget__column footer-widget__about">
+                        <h3 class="footer-widget__title">{{'EXPLORE'|translate}}</h3>
+                        <div class="footer-widget__about-text-box">
+                            <p class="footer-widget__about-text">
+                                {{'VISIT_OUR_MEDIA'|translate}}
+                            </p>
+                        </div>
+                        <div class="site-footer__social">
+                            <a target="_blank" [href]="contact?.twitter"><i class="fab fa-twitter"></i></a>
+                            <a target="_blank" [href]="contact?.facebook"><i class="fab fa-facebook"></i></a>
+                            <a target="_blank" [href]="contact?.instgram"><i class="fab fa-instagram"></i></a>
+                            <a target="_blank" [href]="contact?.linked_in"><i class="fab fa-linkedin"></i></a>
+                            <a target="_blank" [href]="contact?.youtube"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
+                    <div class="footer-widget__column footer-widget__links clearfix">
+                        <h3 class="footer-widget__title">{{'LINKS'|translate}}</h3>
+                        <ul class="footer-widget__links-list list-unstyled clearfix">
+                            <li><a routerLink="/home">{{'HOME'|translate}}</a></li>
+                            <li><a routerLink="/about-us">{{'ABOUT'|translate}}</a></li>
+                            <li><a routerLink="/contact-us-info">{{'CONTACT'|translate}}</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
+                    <div class="footer-widget__column footer-widget__articles clearfix">
+                        <h3 class="footer-widget__title">{{'ARTICLES'|translate}}</h3>
+                        <ul class="footer-widget__articles-list list-unstyled clearfix">
+                            <li *ngFor="let article of articles">
+                                <div class="footer-widget__articles-img">
+                                    <img [src]="article.image" alt="">
+                                    <a><span class="fa fa-link"></span></a>
+                                </div>
+                                <div class="footer-widget__articles-content">
+                                    <p class="footer-widget__articles-date">
+                                        {{getDay(article.created_at)}} {{getMonth(article.created_at)}}
+                                        {{getYear(article.created_at)}}
+                                    </p>
+                                    <h5 class="footer-widget__articles-sub-title">
+                                        <a>
+                                            {{_translateUtil.translateModel(article,['title_en','title_ar'])}}
+                                        </a>
+                                    </h5>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
+                    <div class="footer-widget__column footer-widget__newsletter">
+                        <h3 class="footer-widget__title">{{'OTHER_LINKS'|translate}}</h3>
+                        <ul class="footer-widget__links-list list-unstyled clearfix">
+                            <li><a routerLink="/products-list">{{'PRODUCTS'|translate}}</a></li>
+                            <li><a routerLink="/faqs-list">{{'FAQS'|translate}}</a></li>
+                            <li><a routerLink="/articals-list">{{'ARTICLES'|translate}}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="site-footer__bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="site-footer__bottom-inner">
+                        <p class="site-footer__bottom-text">© {{'COPY_RIGHT'|translate}} {{year}} {{'BY'|translate}} <a
+                                href="#">Innovation</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--Site Footer End-->
